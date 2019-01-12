@@ -2,7 +2,7 @@
 
 import socket
 
-ip = "192.168.10.101"
+ip = "127.0.0.1"     
 port=9090  #port > 6000 are generally free to use
 
 #calling UDP protocol
@@ -11,5 +11,8 @@ port=9090  #port > 6000 are generally free to use
 s=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 
 #sending message to target
-
-s.sendto("abcd",(ip,port))
+while True :
+	data=raw_input("type your mesg :")   #it will send data as well as create its own socket
+	s.sendto(data,(ip,port))   #providing a way to connect
+	#this is for receiving from sender
+	print s.recvfrom(20) 

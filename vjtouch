@@ -1,0 +1,9 @@
+#!/usr/bin/python
+
+import os,sys
+
+for i in sys.argv[1:] :
+	if os.path.exists(i):
+		print i+" Already exists"
+	else:
+		os.mkdir(i)

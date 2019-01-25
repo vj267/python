@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import tweepy
-import sys
+import sys,csv,json
 
 from collections import Counter
 def word_count(fname):
@@ -26,10 +26,14 @@ connected=tweepy.API(auth)
 
 
 #searching topics
-res=""
 tweet=connected.search(sys.argv[1])
-for i in tweet:
-	res=res+i.text
-f=open("tweets.txt","w")
-f.write(res)
+outputFile = open("CurrentObs.csv", 'w') #load csv file 
+output = csv.writer(outputFile) #create a csv.write
+output.writerow(tweet[0].keys())
+for row in tweet:
+    output = csv.writer(outputFile) #create a csv.write 
+    output.writerow(tweet[0].keys())
+for row in tweet:
+    output.writerow(row.values()) #values row
+
 
